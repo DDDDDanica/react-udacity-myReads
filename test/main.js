@@ -3,9 +3,7 @@ import { expect } from 'chai';
 import 'babel-polyfill';
 
 // Import all test files here
-import './cases/MyApp';
-import './cases/TodoInput';
-import './cases/TodoList';
+import './cases/Index';
 
 // Global functions for testing.
 window.shallow = shallow;

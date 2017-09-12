@@ -1,5 +1,5 @@
 {
-  "name": "react-skeleton",
+  "name": "reactnd-project-myreads",
   "scripts": {
     "clean": "rm -rf target",
     "start": "node bin/webpack.serve.js",

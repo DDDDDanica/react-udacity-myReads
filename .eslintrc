@@ -28,6 +28,8 @@
     "sinon": true
   },
   "rules": {
+    "no-console": 1,
+    "no-debugger": 1,
     "curly": [2, "all"],
     "no-alert": 2,
     "no-extend-native": 2,
