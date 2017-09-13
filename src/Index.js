@@ -9,6 +9,9 @@ export default class MyApp extends React.Component {
     render () {
         return (
             <div className="RPM-Index">
+                <div className="RPM-Index-header">
+                    My Reads
+                </div>
                 <BookList />
             </div>
         );
