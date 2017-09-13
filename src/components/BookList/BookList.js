@@ -17,15 +17,17 @@ export default class BookList extends React.Component {
                     <div className="bookContent">
                         <div className="book">
                             <img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" />
-                            <div>Book Name</div>
-                        </div>
-                        <div className="book">
-                            <img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" />
-                            <div>Book Name</div>
-                        </div>
-                        <div className="book">
-                            <img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" />
-                            <div>Book Name</div>
+                            <div className="moveBooks">
+                                <select>
+                                    <option value="none" disabled>Move to...</option>
+                                    <option value="currentlyReading">Currently Reading</option>
+                                    <option value="wantToRead">Want to Read</option>
+                                    <option value="read">Read</option>
+                                    <option value="none">None</option>
+                                </select>
+                            </div>
+                            <div className="title">Book Name</div>
+                            <div className="author">Author</div>
                         </div>
                     </div>
                 </div>
