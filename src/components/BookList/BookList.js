@@ -8,13 +8,16 @@ import './BookList.scss';
 export default class BookList extends React.Component {
     constructor () {
         super();
+        this.state = {
+            books: []
+        };
     }
     
     componentDidMount () {
         // Fetch all the books and allocate them to suitable shelves
         BookApi.getAll().then(books => {
-            console.log(books);
-        })
+            this.setState({books});
+        });
     }
     render () {
         return (
