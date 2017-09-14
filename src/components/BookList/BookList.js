@@ -2,6 +2,7 @@
  * Created by zhao.shen on 13/09/2017.
  */
 import React from 'react';
+import * as BookApi from '../../utility/BookAPI';
 import './BookList.scss';
 
 export default class BookList extends React.Component {
@@ -9,6 +10,12 @@ export default class BookList extends React.Component {
         super();
     }
     
+    componentDidMount () {
+        // Fetch all the books and allocate them to suitable shelves
+        BookApi.getAll().then(books => {
+            console.log(books);
+        })
+    }
     render () {
         return (
             <div className="RPM-BookList">
@@ -16,7 +23,7 @@ export default class BookList extends React.Component {
                     <span className="bookTitle">Current Reading</span>
                     <div className="bookContent">
                         <div className="book">
-                            <img src="http://placehold.it/150x190/e8117f/fff&amp;text=Book%20Title" />
+                            <img src="http://books.google.com/books/content?id=evuwdDLfAyYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
                             <div className="moveBooks">
                                 <select>
                                     <option value="none" disabled>Move to...</option>
