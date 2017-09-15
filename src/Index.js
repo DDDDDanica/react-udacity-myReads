@@ -1,6 +1,6 @@
 import React from 'react';
 import BookList from './components/BookList/BookList';
-import * as BookApi from './utility/BookAPI';
+import * as BookAPI from './utility/BookAPI';
 import './Index.scss';
 
 export default class MyApp extends React.Component {
@@ -9,14 +9,27 @@ export default class MyApp extends React.Component {
         this.state = {
             books: []
         };
+        this.updateBookShelf = this.updateBookShelf.bind(this);
     }
     
     componentDidMount () {
-        // Fetch all the books and allocate them to suitable shelves
-        BookApi.getAll().then(books => {
-            this.setState({books});
+        this.fetchAllBooks();
+    }
+    
+    // Fetch all the books and allocate them to suitable shelves
+    fetchAllBooks () {
+        BookAPI.getAll().then(books => {
+            this.setState({ books });
         });
     }
+    
+    // Update book based on the shelf selected
+    updateBookShelf (book, shelf)  {
+        BookAPI.update(book ,shelf).then(()=>{
+            this.fetchAllBooks();
+        });
+    }
+    
     
     render () {
         return (
@@ -24,7 +37,7 @@ export default class MyApp extends React.Component {
                 <div className="RPM-Index-header">
                     My Reads
                 </div>
-                <BookList books={this.state.books}/>
+                <BookList books={this.state.books} updateBookShelf={this.updateBookShelf}/>
             </div>
         );
     }
