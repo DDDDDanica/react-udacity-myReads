@@ -45,7 +45,7 @@
     --gold: #f5a623;
     --ruby: #e75151;
     --black: #474747;
-    --grey: #cdcdcd;
+    --grey: #979797;
     --white-smoke: #fafafa;
     --white: #ffffff;
 }
@@ -59,20 +59,76 @@ html, body {
 }
 
 .RPM{
-  &-Index {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+    &-Index {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        &-header {
+            text-align: center;
+            font-weight: var(--bold);
+            font-size: var(--title);
+            color: var(--white);
+            background-color: var(--aquamarine);
+            padding: 20px 0;
+        }
+    }
 
-      &-header {
-          text-align: center;
-          font-weight: var(--bold);
-          font-size: var(--title);
-          color: var(--white);
-          background-color: var(--aquamarine);
-          padding: 20px 0;
-      }
-  }
+    &-Loader {
+        height: 100px;
+        position: relative;
+        &-inner {
+            position: absolute;
+            top: 50px;
+            width: calc(100% - 200px);
+            color: var(--aquamarine);
+            padding: 0 100px;
+            text-align: center;
+
+            .loader-label {
+                opacity: 0;
+                display: inline-block;
+            }
+
+            .loader-label:nth-child(6) {
+                animation: LoaderAnimation 2s infinite ease-in-out;
+            }
+
+            .loader-label:nth-child(5) {
+                animation: LoaderAnimation 2s 100ms infinite ease-in-out;
+            }
+
+            .loader-label:nth-child(4) {
+                animation: LoaderAnimation 2s 200ms infinite ease-in-out;
+            }
+
+            .loader-label:nth-child(3) {
+                animation: LoaderAnimation 2s 300ms infinite ease-in-out;
+            }
+
+            .loader-label:nth-child(2) {
+                animation: LoaderAnimation 2s 400ms infinite ease-in-out;
+            }
+
+            .loader-label:nth-child(1) {
+                animation: LoaderAnimation 2s 500ms infinite ease-in-out;
+            }
+        }
+    }
+}
+
+@keyframes LoaderAnimation {
+    0% {
+        opacity: 0;
+        transform: translateX(-300px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(300px);
+    }
 }

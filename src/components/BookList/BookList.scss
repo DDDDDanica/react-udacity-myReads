@@ -7,30 +7,41 @@
         padding: 18px;
         .book {
             &Title {
-                font-weight: var(--bold);
-                font-size: var(--subtitle);
-                color: var(--gold);
+                display: flex;
+                align-content: center;
+                .icon {
+                    width: 24px;
+                    height: 24px;
+                    margin-right: 10px;
+                }
 
+                .text {
+                    font-weight: var(--bold);
+                    font-size: var(--subtitle);
+                    color: var(--aquamarine);
+                }
             }
 
             &Content {
                 border-bottom: 1px solid var(--grey);
+                padding-bottom: 10px;
                 .book {
-                    margin: 20px 0;
-
+                    margin: 20px 40px 20px 0;
+                    width: 180px;
                     display: inline-flex;
                     flex-direction: column;
                     box-sizing: border-box;
                     position: relative;
 
                     img {
-
+                        width: 180px;
+                        height: 240px;
                     }
 
                     .moveBooks {
                         position: absolute;
                         right: 0;
-                        bottom: 30px;
+                        top: 220px;
                         width: 40px;
                         height: 40px;
                         border-radius: 50%;
@@ -49,15 +60,15 @@
                     }
 
                     .title {
+                        margin-top: 20px;
                         padding: 10px 0;
+                        font-size: var(--label);
                     }
 
                     .author {
                         color: var(--grey);
                     }
                 }
-
-
             }
         }
     }
