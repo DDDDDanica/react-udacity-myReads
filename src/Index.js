@@ -30,7 +30,6 @@ export default class MyApp extends React.Component {
         });
     }
     
-    
     render () {
         return (
             <div className="RPM-Index">
