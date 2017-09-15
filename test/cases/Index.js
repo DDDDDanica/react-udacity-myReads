@@ -1,11 +1,11 @@
 import React from 'react';
-import skipFrame from '../utils/skipFrame';
+// import skipFrame from '../utils/skipFrame';
 import Index from '../../src/Index';
-import BookAPI from '../../src/utility/BookAPI';
-import books from '../utils/books.json';
+// import BookAPI from '../../src/utility/BookAPI';
+// import books from '../utils/books.json';
 
 describe('Index', () => {
-    let wrapper, fetchMock, getAllMock;
+    let wrapper;
     
     beforeEach(() => {
         // fetchMock = sinon.stub(window, 'fetch');
@@ -24,9 +24,9 @@ describe('Index', () => {
         expect(wrapper.find('.RPM-Index-header').length).to.equal(1);
     });
     
-    it('should should call API when render component', async () => {
+    it('should should call API when render component', () => {
         wrapper = mount(<Index />);
-        await skipFrame();
+        // await skipFrame();
         // console.log(wrapper.debug());
         
     });
