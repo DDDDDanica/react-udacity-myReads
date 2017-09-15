@@ -1,0 +1,25 @@
+[
+  {
+    "title": "The Linux Command Line",
+    "subtitle": "A Complete Introduction",
+    "authors": [
+      "William E. Shotts, Jr."
+    ],
+    "shelf": "currentlyReading"
+  },{
+    "title": "Learning Web Development with React and Bootstrap",
+    "authors": [
+      "Harmeet Singh",
+      "Mehul Bhatt"
+    ],
+    "shelf": "currentlyReading"
+  },
+  {
+    "title": "Lords of Finance",
+    "subtitle": "The Bankers Who Broke the World",
+    "authors": [
+      "Liaquat Ahamed"
+    ],
+    "shelf": "wantToRead"
+  }
+]

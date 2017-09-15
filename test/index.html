@@ -24,7 +24,7 @@
             left: 0;
             width: 400px;
             bottom: 0;
-            background-color: #ccc;
+            background-color: #ebebeb;
             overflow-y: auto;
         }
 
@@ -177,7 +177,7 @@
                 var end = cov.statementMap[i].end.line - 1;
 
                 for (var j = start; j <= end; j++) {
-                    lineEls[j].style.backgroundColor = cov.s[i] > 0 ? 'lightgreen' : '#FFCCCC';
+                    lineEls[j].style.backgroundColor = cov.s[i] > 0 ? '#00ca9d' : '#FFB2B2';
                     lineEls[j].setAttribute('data-covered', '' + cov.s[i] > 0);
                 }
             }
@@ -190,7 +190,7 @@
                     if (bEntry[j] === 0) {
                         var line = cov.branchMap[i].locations[j].start.line - 1;
                         var el = lineEls[line];
-                        el.style.backgroundColor = el.getAttribute('data-covered') === 'true'? 'yellow' : '#FFCCCC';
+                        el.style.backgroundColor = el.getAttribute('data-covered') === 'true'? '#fbb316' : '#FFB2B2';
                     }
                 }
             }
