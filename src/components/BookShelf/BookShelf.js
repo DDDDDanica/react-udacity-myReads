@@ -18,19 +18,19 @@ export default class BookShelf extends React.Component {
                     </svg>
                     <span className="text">{shelf}</span>
                 </div>
-                <div className="shelfContent">
-                    {books.length > 0 ?
-                        books.map((book, index) => {
+                {books.length > 0 ?
+                    <div className="shelfContent">
+                        {books.map((book, index) => {
                             return (
                                 <div key={index} className="book">
                                     <Book book={book} updateBookShelf={updateBookShelf} />
                                 </div>
                             );
-                        })
-                        :
-                        <Loader/>
-                    }
-                </div>
+                        })}
+                    </div>
+                    :
+                    <Loader/>
+                }
             </div>
         );
     }
