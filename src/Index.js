@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, HashRouter } from 'react-router-dom';
+import Loader from './utility/Loader';
 import BookList from './components/BookList/BookList';
 import SearchBook from './components/SearchBook/SearchBook';
 import * as BookAPI from './utility/BookAPI';
@@ -9,7 +10,8 @@ export default class Index extends React.Component {
     constructor () {
         super();
         this.state = {
-            books: []
+            books: [],
+            isGetting: true
         };
         this.updateBookShelf = this.updateBookShelf.bind(this);
     }
@@ -21,7 +23,7 @@ export default class Index extends React.Component {
     // Fetch all the books and allocate them to suitable shelves
     fetchAllBooks () {
         BookAPI.getAll().then(books => {
-            this.setState({ books });
+            this.setState({ books, isGetting: false });
         });
     }
     
@@ -33,26 +35,29 @@ export default class Index extends React.Component {
     }
     
     render () {
-        let books = this.state;
+        let { books, isGetting } = this.state;
         return (
             <div className="RPM-Index">
-                <HashRouter>
-                    <div>
-                        <Route exact path="/" render={() => (
-                            <BookList books={books} updateBookShelf={this.updateBookShelf}/>
-                        )}/>
-                        <Route exact path="/search" render={({history}) => (
-                            <SearchBook
-                                books={books}
-                                updateBookShelf={() => {
-                                    this.updateBookShelf();
-                                    history.push('/');
-                                }}
-                            />
+                {isGetting ?
+                    <Loader /> :
+                    <HashRouter>
+                        <div>
+                            <Route exact path="/" render={() => (
+                                <BookList books={books} updateBookShelf={this.updateBookShelf}/>
+                            )}/>
+                            <Route exact path="/search" render={({history}) => (
+                                <SearchBook
+                                    books={books}
+                                    updateBookShelf={() => {
+                                        this.updateBookShelf();
+                                        history.push('/');
+                                    }}
+                                />
                             )}
-                        />
-                    </div>
-                </HashRouter>
+                            />
+                        </div>
+                    </HashRouter>
+                }
             </div>
         );
     }

@@ -37,7 +37,7 @@ export default class BookList extends React.Component {
                         />
                     );
                 })}
-                <Link to="/search" className="RPM-BookList-add" onClick="">+</Link>
+                <Link to="/search" className="RPM-BookList-add">+</Link>
             </div>
         );
     }
