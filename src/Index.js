@@ -27,7 +27,6 @@ export default class Index extends React.Component {
     
     // Update book based on the shelf selected
     updateBookShelf (book, shelf)  {
-        console.log(book);
         BookAPI.update(book ,shelf).then(()=>{
             this.fetchAllBooks();
         });

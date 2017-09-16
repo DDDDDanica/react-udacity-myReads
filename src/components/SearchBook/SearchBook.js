@@ -37,7 +37,10 @@ export default class SearchBook extends React.Component {
                             isSearching: false
                         });
                     } else {
-                        this.setState({results: []});
+                        this.setState({
+                            results: [],
+                            isSearching: false
+                        });
                     }
                 });
         });
