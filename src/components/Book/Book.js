@@ -29,7 +29,7 @@ export default class Book extends React.Component {
             <div>
                 <img src={imageURL} />
                 <div className="moveBooks">
-                    <select defaultValue={book.shelf} onChange={this.handleMoveBook}>
+                    <select defaultValue={book.shelf ? book.shelf : 'none'} onChange={this.handleMoveBook}>
                         <option value="none" disabled>Move to...</option>
                         {actions.map((action, index) => (
                             <option key={index} value={action.value}>{action.action}</option>
