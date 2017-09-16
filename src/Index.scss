@@ -65,14 +65,6 @@ html, body {
         left: 0;
         right: 0;
         bottom: 0;
-        &-header {
-            text-align: center;
-            font-weight: var(--bold);
-            font-size: var(--title);
-            color: var(--white);
-            background-color: var(--aquamarine);
-            padding: 20px 0;
-        }
     }
 
     &-Loader {

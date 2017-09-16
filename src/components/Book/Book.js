@@ -43,7 +43,7 @@ export default class Book extends React.Component {
                     }
                 </div>
                 <div className="author">
-                    {book.authors.map(author => author)}
+                    {book.authors && book.authors.map(author => author)}
                 </div>
             </div>
         );

@@ -16,14 +16,14 @@ export default class BookShelf extends React.Component {
                     <svg className="icon">
                         <use xlinkHref="images/quill.svg#icon"/>
                     </svg>
-                    <span className="text">{shelf.label}</span>
+                    <span className="text">{shelf}</span>
                 </div>
                 <div className="shelfContent">
                     {books.length > 0 ?
                         books.map((book, index) => {
                             return (
                                 <div key={index} className="book">
-                                    <Book book={book} updateBookShelf={updateBookShelf}/>
+                                    <Book book={book} updateBookShelf={updateBookShelf} />
                                 </div>
                             );
                         })
@@ -38,7 +38,7 @@ export default class BookShelf extends React.Component {
 
 // Register property
 BookShelf.propTypes = {
-    shelf: PropTypes.object,
+    shelf: PropTypes.string,
     books: PropTypes.array,
     updateBookShelf: PropTypes.func
 };

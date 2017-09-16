@@ -1,0 +1,60 @@
+.RPM-Search {
+    .search {
+        &Area {
+            padding: 20px 0;
+            display: flex;
+            align-content: center;
+
+            .icon {
+                width: 32px;
+                height: 32px;
+                margin: 0 20px 0 10px;
+            }
+
+            input[type="text"] {
+                color: var(--black);
+                font-size: var(--label);
+                outline: none;
+                border: none;
+                border-bottom: 1px solid var(--gold);
+                height: 40px;
+                width: 320px;
+                line-height: 14px;
+                box-sizing: border-box;
+                padding: 8px 12px;
+                font-family: 'Roboto', sans-serif;
+            }
+
+            // don't group them
+            ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                color: var(--grey);
+                font-size: var(--label);
+                font-weight: var(--normal);
+                font-family: 'Roboto', sans-serif;
+            }
+
+            ::-moz-placeholder { /* Firefox 19+ */
+                color: var(--grey);
+                font-size: var(--label);
+                font-weight: var(--normal);
+                font-family: 'Roboto', sans-serif;
+            }
+        }
+
+        &Results {
+            .error {
+                text-align: center;
+                margin-top: 10%;
+                .monsterIcon {
+                    margin-left: 15%;
+                }
+                .hint {
+                    font-size: var(--subtitle);
+                    font-weight: var(--bold);
+                }
+            }
+
+
+        }
+    }
+}
