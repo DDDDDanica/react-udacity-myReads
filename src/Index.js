@@ -49,7 +49,7 @@ export default class Index extends React.Component {
                                 <SearchBook
                                     books={books}
                                     updateBookShelf={() => {
-                                        this.updateBookShelf;
+                                        this.updateBookShelf();
                                         history.push('/');
                                     }}
                                 />
