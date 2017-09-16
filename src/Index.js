@@ -29,6 +29,7 @@ export default class Index extends React.Component {
     
     // Update book based on the shelf selected
     updateBookShelf (book, shelf) {
+        console.log(book, shelf);
         BookAPI.update(book ,shelf).then(()=>{
             this.fetchAllBooks();
         });
@@ -48,10 +49,8 @@ export default class Index extends React.Component {
                             <Route exact path="/search" render={({history}) => (
                                 <SearchBook
                                     books={books}
-                                    updateBookShelf={() => {
-                                        this.updateBookShelf();
-                                        history.push('/');
-                                    }}
+                                    updateBookShelf={this.updateBookShelf}
+                                    onBackClick={() => history.push('/') }
                                 />
                             )}
                             />

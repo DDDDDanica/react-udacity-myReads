@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import BookShelf from '../BookShelf/BookShelf';
 import Loader from '../../utility/Loader';
 import * as BookAPI from '../../utility/BookAPI';
@@ -60,11 +59,10 @@ export default class SearchBook extends React.Component {
         return (
             <div className="RPM-Search">
                 <div className="searchArea">
-                    <Link to="/">
-                        <svg className="icon">
-                            <use xlinkHref="images/back.svg#icon"/>
-                        </svg>
-                    </Link>
+                    <svg className="icon" onClick={this.props.onBackClick}>
+                        <use xlinkHref="images/back.svg#icon"/>
+                    </svg>
+                    
                     <input type="text"
                            placeholder="Search a book by title or author"
                            value={query}
@@ -102,5 +100,6 @@ export default class SearchBook extends React.Component {
 // Register property
 SearchBook.propTypes = {
     books: PropTypes.array,
-    updateBookShelf: PropTypes.func
+    updateBookShelf: PropTypes.func,
+    onBackClick: PropTypes.func
 };
