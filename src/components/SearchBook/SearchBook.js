@@ -29,20 +29,27 @@ export default class SearchBook extends React.Component {
             query: query,
             isSearching: true
         }, () => {
-            BookAPI.search(query, 30)
-                .then(books => {
-                    if (Array.isArray(books)) {
-                        this.setState({
-                            results: books,
-                            isSearching: false
-                        });
-                    } else {
-                        this.setState({
-                            results: [],
-                            isSearching: false
-                        });
-                    }
+            if (query.length > 0) {
+                BookAPI.search(query, 30)
+                    .then(books => {
+                        if (Array.isArray(books)) {
+                            this.setState({
+                                results: books,
+                                isSearching: false
+                            });
+                        } else {
+                            this.setState({
+                                results: [],
+                                isSearching: false
+                            });
+                        }
+                    });
+            } else {
+                this.setState({
+                    results: [],
+                    isSearching: false
                 });
+            }
         });
     }
     
