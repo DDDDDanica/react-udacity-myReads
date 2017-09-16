@@ -15,7 +15,8 @@ export default class SearchBook extends React.Component {
         this.state = ({
             query: '',
             results: [],
-            isSearching: false
+            isSearching: false,
+            error: false
         });
         
         this.handleUpdateQuery = this.handleUpdateQuery.bind(this);
@@ -40,7 +41,8 @@ export default class SearchBook extends React.Component {
                         } else {
                             this.setState({
                                 results: [],
-                                isSearching: false
+                                isSearching: false,
+                                error: true
                             });
                         }
                     });
@@ -76,19 +78,20 @@ export default class SearchBook extends React.Component {
                     {isSearching ?
                         <Loader />
                         : results.length > 0 ?
-                            <div>
-                                <BookShelf books={results}
-                                           shelf="Search Results..."
-                                           updateBookShelf={this.props.updateBookShelf}
-                                />
-                            </div>
+                            <BookShelf books={results}
+                                       shelf="Search Results..."
+                                       updateBookShelf={this.props.updateBookShelf}
+                            />
                             :
                             <div className="error">
                                 <svg className="monsterIcon">
                                     <use xlinkHref="images/error.svg#icon"/>
                                 </svg>
                                 <div className="hint">
-                                    Oops, there is no result matching your search.
+                                    {!this.state.error?
+                                        'Start your first search here... '
+                                        : 'Oops, there is no result matching your search :('
+                                    }
                                 </div>
                             </div>
                     }
