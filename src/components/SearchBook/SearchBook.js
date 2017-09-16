@@ -40,7 +40,6 @@ export default class SearchBook extends React.Component {
                             });
                         } else {
                             this.setState({
-                                results: [],
                                 isSearching: false,
                                 error: true
                             });
@@ -54,7 +53,6 @@ export default class SearchBook extends React.Component {
             }
         });
     }
-    
     
     render () {
         const { query, results, isSearching } = this.state;
