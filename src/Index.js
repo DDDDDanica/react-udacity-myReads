@@ -29,9 +29,34 @@ export default class Index extends React.Component {
     
     // Update book based on the shelf selected
     updateBookShelf (book, shelf) {
-        console.log(book, shelf);
-        BookAPI.update(book ,shelf).then(()=>{
-            this.fetchAllBooks();
+        // istanbul ignore next
+        BookAPI.update(book, shelf).then(books => {
+            this.setState(({ books }) => {
+            
+                // Check if book was added from
+                // the search screen
+                const isPresent = books.find(b => (
+                    b.id === book.id
+                ));
+            
+                // If book was previously selected
+                // find book and only change the shelf
+                if (!isPresent) {
+                    return {
+                        books: books.filter(b =>
+                            b.id === book.id ? b.shelf = shelf : b
+                        )
+                    };
+                }
+            
+                // If books was not previously selected,
+                // update shelf and add it to the list
+                return {
+                    books: books.concat(
+                        Object.assign({}, book, { shelf: shelf })
+                    )
+                };
+            });
         });
     }
     
@@ -50,7 +75,10 @@ export default class Index extends React.Component {
                                 <SearchBook
                                     books={books}
                                     updateBookShelf={this.updateBookShelf}
-                                    onBackClick={() => history.push('/') }
+                                    onBackClick={() => {
+                                        this.fetchAllBooks();
+                                        history.push('/');
+                                    }}
                                 />
                             )}
                             />
