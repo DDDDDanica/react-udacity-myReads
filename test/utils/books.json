@@ -2,12 +2,20 @@
   {
     "title": "The Linux Command Line",
     "subtitle": "A Complete Introduction",
+    "imageLinks": {
+      "smallThumbnail":"http://books.google.com/books/content?id=74XNzF_al3MC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+      "thumbnail": "http://books.google.com/books/content?id=74XNzF_al3MC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
     "authors": [
       "William E. Shotts, Jr."
     ],
     "shelf": "currentlyReading"
   },{
     "title": "Learning Web Development with React and Bootstrap",
+    "imageLinks": {
+      "smallThumbnail":"http://books.google.com/books/content?id=74XNzF_al3MC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+      "thumbnail": "http://books.google.com/books/content?id=74XNzF_al3MC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
     "authors": [
       "Harmeet Singh",
       "Mehul Bhatt"
@@ -17,6 +25,10 @@
   {
     "title": "Lords of Finance",
     "subtitle": "The Bankers Who Broke the World",
+    "imageLinks": {
+      "smallThumbnail":"http://books.google.com/books/content?id=74XNzF_al3MC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+      "thumbnail": "http://books.google.com/books/content?id=74XNzF_al3MC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    },
     "authors": [
       "Liaquat Ahamed"
     ],

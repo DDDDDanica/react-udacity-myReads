@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BookShelf from '../BookShelf/BookShelf';
 import Loader from '../../utility/Loader';
-import * as BookAPI from '../../utility/BookAPI';
+import BookAPI from '../../utility/BookAPI';
 import './SearchBook.scss';
 
 export default class SearchBook extends React.Component {

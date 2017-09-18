@@ -3,7 +3,7 @@ import { Route, HashRouter } from 'react-router-dom';
 import Loader from './utility/Loader';
 import BookList from './components/BookList/BookList';
 import SearchBook from './components/SearchBook/SearchBook';
-import * as BookAPI from './utility/BookAPI';
+import BookAPI from './utility/BookAPI';
 import './Index.scss';
 
 export default class Index extends React.Component {
@@ -23,41 +23,31 @@ export default class Index extends React.Component {
     // Fetch all the books and allocate them to suitable shelves
     fetchAllBooks () {
         BookAPI.getAll().then(books => {
+            console.log(books);
             this.setState({ books, isGetting: false });
         });
     }
     
     // Update book based on the shelf selected
     updateBookShelf (book, shelf) {
-        // istanbul ignore next
-        BookAPI.update(book, shelf).then(books => {
-            this.setState(({ books }) => {
-            
-                // Check if book was added from
-                // the search screen
-                const isPresent = books.find(b => (
-                    b.id === book.id
-                ));
-            
-                // If book was previously selected
-                // find book and only change the shelf
-                if (!isPresent) {
-                    return {
-                        books: books.filter(b =>
-                            b.id === book.id ? b.shelf = shelf : b
-                        )
-                    };
-                }
-            
-                // If books was not previously selected,
-                // update shelf and add it to the list
-                return {
-                    books: books.concat(
-                        Object.assign({}, book, { shelf: shelf })
-                    )
-                };
+        BookAPI.update(book, shelf)
+            .then(shelfData => {
+                console.log(shelfData);
+                // // Check if book is added from the search list
+                // let bookStatus = books.find(b => b.id === book.id);
+                //
+                // bookStatus ?
+                //     // If book is in the user's selection, only change the shelf
+                //     this.setState({
+                //         books: books.filter(b =>b.id === book.id ? b.shelf = shelf : b)
+                //     })
+                //     :
+                //     // If book is not in the user's list, add the book to list and update shelf status
+                //     this.setState({
+                //         books: books.concat(Object.assign({}, book, { shelf: shelf })
+                //         )
+                //     });
             });
-        });
     }
     
     render () {
