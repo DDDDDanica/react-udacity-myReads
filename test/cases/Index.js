@@ -1,5 +1,4 @@
 import React from 'react';
-import skipFrame from '../utils/skipFrame';
 import Index from '../../src/Index';
 import BookAPI from '../../src/utility/BookAPI';
 import books from '../utils/books.json';
@@ -16,12 +15,16 @@ describe('Index', () => {
     afterEach(() => {
         getAllMock.restore();
     });
-
-    it('should should call API when render component', async () => {
+    
+    it('should render loader by default', () => {
         wrapper = mount(<Index />);
-        await skipFrame();
-        console.log(wrapper.debug());
-
+        expect(wrapper.find('.RPM-Loader').length).to.equal(1);
     });
+
+    // it('should should call API when render component', () => {
+    //     wrapper = mount(<Index />);
+    //     console.log(wrapper.debug());
+    //
+    // });
     // it('should load books from API when renders component');
 });

@@ -23,30 +23,31 @@ export default class Index extends React.Component {
     // Fetch all the books and allocate them to suitable shelves
     fetchAllBooks () {
         BookAPI.getAll().then(books => {
-            console.log(books);
             this.setState({ books, isGetting: false });
         });
     }
     
     // Update book based on the shelf selected
-    updateBookShelf (book, shelf) {
-        BookAPI.update(book, shelf)
-            .then(shelfData => {
-                console.log(shelfData);
-                // // Check if book is added from the search list
-                // let bookStatus = books.find(b => b.id === book.id);
-                //
-                // bookStatus ?
-                //     // If book is in the user's selection, only change the shelf
-                //     this.setState({
-                //         books: books.filter(b =>b.id === book.id ? b.shelf = shelf : b)
-                //     })
-                //     :
-                //     // If book is not in the user's list, add the book to list and update shelf status
-                //     this.setState({
-                //         books: books.concat(Object.assign({}, book, { shelf: shelf })
-                //         )
-                //     });
+    updateBookShelf (newBook, shelf) {
+        BookAPI.update(newBook, shelf)
+            .then(() => {
+                // shelfData returns shelf with id so not used
+                let books = this.state.books;
+                // Check if book is added from the search list
+                let bookStatus = books.find(book => book.id === newBook.id);
+
+                bookStatus ?
+                    // If the new book is in the user's selection, only change the shelf
+                    this.setState({
+                        books: books.filter(book => book.id === newBook.id ? book.shelf = shelf : book)
+                    })
+                    :
+                    // If the new book is not in the user's list, add the book to list and update shelf status
+                    this.setState({
+                        books: books.concat(Object.assign(
+                          {}, newBook, { shelf: shelf }
+                        ))
+                    });
             });
     }
     
