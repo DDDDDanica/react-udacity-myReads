@@ -4,7 +4,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Book from '../Book/Book';
-import Loader from '../../utility/Loader';
 import './BookShelf.scss';
 
 export default class BookShelf extends React.Component {
@@ -29,7 +28,7 @@ export default class BookShelf extends React.Component {
                         })}
                     </div>
                     :
-                    <Loader/>
+                    null
                 }
             </div>
         );
