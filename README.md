@@ -1,13 +1,8 @@
-# React Skeleton
+# Reactnd-Project-Myreads
+MyReads is a bookshelf app for users to category books in the shelf and also search for more books in DB 
+and add books to their shelf.
 
-Minimal and simple React-based skeleton with the following features:
-
-* Babel for transpiling the React code.
-* ESLint for static code analysis.
-* Code compilation and bundling using WebPack.
-* Testing in browser with code coverage, and testing during build.
-
-## Running Application
+## Running App
 * ```npm start```
 * Go to ```http://localhost:9001```
 
