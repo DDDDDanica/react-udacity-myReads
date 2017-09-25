@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import BookShelf from '../BookShelf/BookShelf';
 import Loader from '../../utility/Loader';
 import BookAPI from '../../utility/BookAPI';
+import throttle from 'lodash/throttle';
 import './SearchBook.scss';
 
 export default class SearchBook extends React.Component {
@@ -18,32 +19,36 @@ export default class SearchBook extends React.Component {
             error: false
         });
         
-        this.handleUpdateQuery = this.handleUpdateQuery.bind(this);
+        this.handleUpdateQuery = throttle(this.handleUpdateQuery.bind(this), 1000);
     }
     
     // Take user's input value and make changes to query state
     handleUpdateQuery (e) {
         e.preventDefault();
         let query = e.target.value.trim();
+    
+        let searchBooks =
+          BookAPI.search(query, 30)
+          .then(books => {
+              if (Array.isArray(books)) {
+                  this.setState({
+                      results: books,
+                      isSearching: false
+                  });
+              } else {
+                  this.setState({
+                      isSearching: false,
+                      error: true
+                  });
+              }
+          });
+        
         this.setState({
             query: query,
             isSearching: true
         }, () => {
             if (query.length > 0) {
-                BookAPI.search(query, 30)
-                    .then(books => {
-                        if (Array.isArray(books)) {
-                            this.setState({
-                                results: books,
-                                isSearching: false
-                            });
-                        } else {
-                            this.setState({
-                                isSearching: false,
-                                error: true
-                            });
-                        }
-                    });
+                searchBooks();
             } else {
                 this.setState({
                     results: [],
