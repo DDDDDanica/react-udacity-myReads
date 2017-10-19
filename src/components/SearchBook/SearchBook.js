@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import BookShelf from '../BookShelf/BookShelf';
 import Loader from '../../utility/Loader';
 import BookAPI from '../../utility/BookAPI';
-import throttle from 'lodash/throttle';
+import _ from 'lodash';
 import './SearchBook.scss';
 
 export default class SearchBook extends React.Component {
@@ -19,12 +19,12 @@ export default class SearchBook extends React.Component {
             error: false
         });
         
-        this.handleUpdateQuery = throttle(this.handleUpdateQuery.bind(this), 1000);
+        this.handleUpdateQuery = _.throttle(this.handleUpdateQuery.bind(this), 100);
     }
     
     // Take user's input value and make changes to query state
     handleUpdateQuery (e) {
-        e.preventDefault();
+        e.persist();
         let query = e.target.value.trim();
     
         let searchBooks =
@@ -48,7 +48,7 @@ export default class SearchBook extends React.Component {
             isSearching: true
         }, () => {
             if (query.length > 0) {
-                searchBooks();
+                searchBooks;
             } else {
                 this.setState({
                     results: [],
@@ -82,6 +82,7 @@ export default class SearchBook extends React.Component {
                             <BookShelf books={results}
                                        shelf="Search Results..."
                                        updateBookShelf={this.props.updateBookShelf}
+                                       getBookShelf={this.props.getBookShelf}
                             />
                             :
                             <div className="error">
@@ -106,5 +107,6 @@ export default class SearchBook extends React.Component {
 SearchBook.propTypes = {
     books: PropTypes.array,
     updateBookShelf: PropTypes.func,
+    getBookShelf: PropTypes.func,
     onBackClick: PropTypes.func
 };

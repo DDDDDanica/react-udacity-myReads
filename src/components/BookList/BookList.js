@@ -21,7 +21,7 @@ const shelves = [
 
 export default class BookList extends React.Component {
     render () {
-        let { books, updateBookShelf } = this.props;
+        let { books, updateBookShelf, getBookShelf } = this.props;
         return (
             <div className="RPM-BookList">
                 <div className="RPM-BookList-header">
@@ -34,6 +34,7 @@ export default class BookList extends React.Component {
                                    shelf={shelf.label}
                                    books={books.filter(book => book.shelf === shelf.shelf)}
                                    updateBookShelf={updateBookShelf}
+                                   getBookShelf={getBookShelf}
                         />
                     );
                 })}
@@ -46,5 +47,6 @@ export default class BookList extends React.Component {
 // Register property
 BookList.propTypes = {
     books: PropTypes.array,
-    updateBookShelf: PropTypes.func
+    updateBookShelf: PropTypes.func,
+    getBookShelf: PropTypes.func
 };

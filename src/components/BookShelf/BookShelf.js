@@ -8,7 +8,7 @@ import './BookShelf.scss';
 
 export default class BookShelf extends React.Component {
     render () {
-        const { shelf, books, updateBookShelf } = this.props;
+        const { shelf, books, updateBookShelf, getBookShelf } = this.props;
         return (
             <div className="RPM-BookList-category">
                 <div className="shelfTitle">
@@ -22,7 +22,9 @@ export default class BookShelf extends React.Component {
                         {books.map((book, index) => {
                             return (
                                 <div key={index} className="book">
-                                    <Book book={book} updateBookShelf={updateBookShelf} />
+                                    <Book book={book}
+                                          updateBookShelf={updateBookShelf}
+                                          getBookShelf={getBookShelf}/>
                                 </div>
                             );
                         })}
@@ -39,5 +41,6 @@ export default class BookShelf extends React.Component {
 BookShelf.propTypes = {
     shelf: PropTypes.string,
     books: PropTypes.array,
-    updateBookShelf: PropTypes.func
+    updateBookShelf: PropTypes.func,
+    getBookShelf: PropTypes.func
 };

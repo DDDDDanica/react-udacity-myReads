@@ -14,6 +14,7 @@ export default class Index extends React.Component {
             isGetting: true
         };
         this.updateBookShelf = this.updateBookShelf.bind(this);
+        this.getBookShelf = this.getBookShelf.bind(this);
     }
     
     componentDidMount () {
@@ -51,6 +52,16 @@ export default class Index extends React.Component {
             });
     }
     
+    getBookShelf (id) {
+        let books = this.state.books;
+        let book = books.find(book => { return book.id === id; });
+        if (book) {
+            return book.shelf;
+        } else {
+            return 'none';
+        }
+    }
+    
     render () {
         let { books, isGetting } = this.state;
         return (
@@ -60,12 +71,13 @@ export default class Index extends React.Component {
                     <HashRouter>
                         <div>
                             <Route exact path="/" render={() => (
-                                <BookList books={books} updateBookShelf={this.updateBookShelf}/>
+                                <BookList books={books} updateBookShelf={this.updateBookShelf} getBookShelf={this.getBookShelf}/>
                             )}/>
                             <Route exact path="/search" render={({history}) => (
                                 <SearchBook
                                     books={books}
                                     updateBookShelf={this.updateBookShelf}
+                                    getBookShelf={this.getBookShelf}
                                     onBackClick={() => {
                                         this.fetchAllBooks();
                                         history.push('/');

@@ -23,13 +23,14 @@ export default class Book extends React.Component {
     }
     
     render () {
-        const { book } = this.props;
-        const imageURL = book.imageLinks.thumbnail || book.imageLinks.smallThumbnail;
+        const { book, getBookShelf } = this.props;
+        const imageURL = book.imageLinks.thumbnail;
+        const shelf = getBookShelf(book.id);
         return (
             <div>
                 <img src={imageURL} />
                 <div className="moveBooks">
-                    <select defaultValue={book.shelf? book.shelf : 'none'} onChange={this.handleMoveBook}>
+                    <select defaultValue={shelf} onChange={this.handleMoveBook}>
                         <option value="none" disabled>Move to...</option>
                         {actions.map((action, index) => (
                             <option key={index} value={action.value}>{action.action}</option>
@@ -53,5 +54,6 @@ export default class Book extends React.Component {
 // Register property
 Book.propTypes = {
     book: PropTypes.object,
-    updateBookShelf: PropTypes.func
+    updateBookShelf: PropTypes.func,
+    getBookShelf: PropTypes.func
 };
