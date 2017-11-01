@@ -25,7 +25,7 @@ export default class SearchBook extends React.Component {
     // Take user's input value and make changes to query state
     handleUpdateQuery (e) {
         e.persist();
-        let query = e.target.value.trim();
+        let query = e.target.value;
     
         let searchBooks =
           BookAPI.search(query, 30)
